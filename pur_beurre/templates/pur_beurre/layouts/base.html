@@ -1,10 +1,86 @@
+{% load static %}
+
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
+<html lang="fr">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
     <title>{% block title %}Pur Beurre{% endblock %}</title>
-</head>
-<body>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'pur_beurre/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="{% static 'pur_beurre/vendor/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Scope+One" rel="stylesheet" type="text/css">
+
+    <!-- Plugin CSS -->
+    <link href="{% static 'pur_beurre/vendor/magnific-popup/magnific-popup.css' %}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link  href="{% static 'pur_beurre/css/creative.css' %}" rel="stylesheet">
+    <link  href="{% static 'pur_beurre/css/style.css' %}" rel="stylesheet">
+
+    <!-- Fontawesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+  </head>
+
+
+
+
+<body id="page-top">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+      <div class="container">
+        <a class="navbar-brand js-scroll-trigger" href="{% url 'pur_beurre:index' %}#page-top"><img class="logo-small" src="{% static 'pur_beurre/img/logo_pur_beurre.png' %}" alt=""> Pur Beurre</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+             <input type="text" class="form-control" placeholder="Entrez un aliment">
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="{% url 'pur_beurre:index' %}#about">A propos</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link js-scroll-trigger" href=""><i class="fa fa-user fa-2x"></i></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link js-scroll-trigger" href=""><img src="{% static 'pur_beurre/img/noun_Carrot_29691_grey.png' %}" alt="" class="carrot"></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link js-scroll-trigger" href=""><i class="fa fa-sign-out-alt fa-2x"></i></a>
+
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
     {% block body %}{% endblock %}
 </body>
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+          <div class="col-lg-6 text-center">
+            <span><a href="{% url 'pur_beurre:legal' %}" class="footer-link">Mention légales</a></span>
+          </div>
+          <div class="col-lg-6 text-center">
+            <span><a href="{% url 'pur_beurre:index' %}#contact" class="footer-link">Contact</a></span>
+          </div>
+    </div>
+</footer>
 </html>

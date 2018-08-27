@@ -1,3 +1,64 @@
 .logo-small{
     height: 1.5em;
 }
+
+.carrot{
+    height: 2em;
+}
+
+h1{
+    color: #fff;
+    font-family: "Open Sans", sans-serif;
+    text-shadow: 0 1px 1px black, 1px 0 1px black;
+}
+
+
+.header-subtitle{
+    color: #fff;
+    font-family: "Scope One", sans-serif;
+    text-shadow: 0 1px 1px black, 1px 0 1px black;
+}
+
+a {
+   outline: 0;
+}
+
+.description {
+    color: #c45525;
+    font-family: "Open Sans", sans-serif;
+    font-size: small;
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+.foodsearch {
+    color: #c45525;
+    font-family: "Open Sans", sans-serif;
+}
+
+.img-about {
+    height: 200px;
+    text-align: center;
+}
+
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #345a61;
+    color: white;
+    text-align: center;
+}
+
+.footer-link {
+    color: rgba(255, 255, 255, 0.7);
+    font-family: "Scope One", sans-serif;
+}
+
+
+.footer-link:hover {
+    color: white;
+    font-family: "Scope One", sans-serif;
+}
