@@ -1,7 +1,4 @@
-from django.shortcuts import render
 
-# Create your views here.
-from django.http import HttpResponse
 from django.shortcuts import render
 
 
@@ -11,10 +8,6 @@ def index(request):
 
 def results(request):
     return render(request, "pur_beurre/pages/results.html")
-
-
-def user(request):
-    return render(request, "pur_beurre/pages/user.html")
 
 
 def food(request):
