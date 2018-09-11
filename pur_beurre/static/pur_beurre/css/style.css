@@ -27,7 +27,7 @@ a {
     color: #c45525;
     font-family: "Open Sans", sans-serif;
     font-size: small;
-    text-align: justify;
+    text-align: center;
     text-justify: inter-word;
 }
 
@@ -41,6 +41,11 @@ a {
     text-align: center;
 }
 
+.img-product {
+    max-height: 175px;
+    max-width: 200px;
+    text-align: center;
+}
 
 .footer {
     position: fixed;
@@ -70,7 +75,7 @@ a {
     padding: 4px 9px;
     border: 2px solid white;
     border-radius:100px;
-    background: -webkit-linear-gradient(top, #a3ff88 0%, #3ab014 100%);
+    background: -webkit-linear-gradient(top, #cbb6a9 0%, #5d5c44 100%);
     box-shadow: 0 1px 2px rgba(0,0,0,.5), 0 1px 4px rgba(0,0,0,.4), 0 0 1px rgba(0,0,0,.7) inset, 0 10px 0px rgba(255,255,255,.11) inset;
     -webkit-background-clip: padding-box;
     font:bold 16px/20px "Helvetica Neue", sans-serif;
@@ -78,3 +83,4 @@ a {
     text-decoration: none;
     text-shadow: 0 -1px 0 rgba(0,0,0,.6);
 }
+

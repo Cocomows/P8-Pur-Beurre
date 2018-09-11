@@ -9,10 +9,30 @@
       <div class="col-lg-12 text-center">
         <h2 class="section-heading">Food</h2>
         <hr class="my-4">
-          <p>Food information
+          <p>Information produit
             </p>
       </div>
     </div>
   </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 mx-auto text-center">
+                <img class="sr-icons img-product" src="{{ food_json.product.image_url}}" alt="">
+                <p>Le produit {{ food_json.product.product_name }} de la marque {{ food_json.product.brands }} a pour code : {{ code }}</p>
+                <p>Nutriscore : <img src="https://static.openfoodfacts.org/images/misc/nutriscore-{{ food_json.product.nutrition_grades }}.svg" alt=""></p>
+                <p>Le résultat en json brut : <a href="{{ api_url }}">lien</a></p>
+                <p>Les catégories :
+
+                {% for category in food_json.product.categories_hierarchy %}
+                    <a href="https://fr.openfoodfacts.org/categorie/{{ category }}.json">{{ category }}</a>
+                {% endfor %}
+                </p>
+
+{#                food_json.product.categories_hierarchy|length|add:'-1'#}
+                <p>Catégorie la plus fine :  <a href="https://fr.openfoodfacts.org/categorie/{{ food_json.product.categories_hierarchy|last }}.json">{{  food_json.product.categories_hierarchy|last }}</a></p>
+            </div>
+        </div>
+    </div>
+
 </section>
 {% endblock content %}

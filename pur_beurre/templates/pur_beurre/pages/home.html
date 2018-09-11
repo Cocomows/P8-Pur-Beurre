@@ -17,12 +17,12 @@
                 Trouvez un produit de substitution pour ceux que vous consommez tous les jours.
               </h2>
 
-            <div class="foodsearch input-group input-group-lg mb-3">
-              <input type="text" class="form-control" placeholder="Entrez un aliment">
+            <form class="foodsearch input-group input-group-lg mb-3" action="{%  url 'pur-beurre-results' %}">
+              <input type="text" class="form-control" placeholder="Entrez un aliment" name="q">
               <div class="input-group-append">
                 <span class="input-group-text" id="foodsearch">Rechercher</span>
               </div>
-            </div>
+            </form>
           </div>
         </div>
       </div>

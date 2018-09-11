@@ -4,101 +4,83 @@
 {% block content %}
 
 
-    <section id="results">
-      <div class="container">
+<section id="results">
+    <div class="container">
         <div class="row">
-          <div class="col-lg-12 text-center">
-            <h2 class="section-heading">Produits</h2>
-            <hr class="my-4">
-          </div>
+            <div class="col-lg-12 text-center">
+                <h2 class="section-heading">Produits</h2>
+                <hr class="my-4">
+            </div>
         </div>
-      </div>
-
-      <div class="container">
+    </div>
+    {% if query is not None %}
+    <div class="container">
         <div class="row">
             <div class="col-lg-10 mx-auto text-center">
-
-
-                    <p>Le produit recherché
-
-
-                   </p>
-
+                <p>Le produit recherché : {{ query }}</p>
+                <p>Le résultat en json brut : <a href="{{ api_total_url }}">lien</a></p>
             </div>
         </div>
-      </div>
+    </div>
 
 
-      <div class="container">
+    <div class="container">
         <div class="row">
-          <div class="col-lg-12 text-center">
-            <h2 class="section-heading">Les substituts</h2>
-            <hr class="my-4">
-          </div>
-        </div>
-      </div>
+        {% for product in food_json.products %}
+            <div class="col-lg-4 col-md-4 text-center">
+                <div class="service-box mt-5 mx-auto">
+                    <a href="{% url 'pur-beurre-food' %}?code={{ product.code }}">
+                    <img class="sr-icons img-product" src="{{ product.image_url}}" alt="">
+{#                    <span class="nutriscore">{{ product.nutrition_grade_fr}}</span>#}
+                    <h3 class="mb-3 ba">{{ product.product_name}}</h3>
+                    <p class="description text-muted mb-lg-0">{{ product.generic_name}}</p></a>
+                </div>
+            </div>
 
-      <div class="container">
+            {% if forloop.counter|divisibleby:3 %}
+        </div>
         <div class="row">
-          <div class="col-lg-4 col-md-4 text-center">
-            <div class="service-box mt-5 mx-auto">
-              <img class="sr-icons img-about" src="https://static.openfoodfacts.org/images/products/310/322/000/9574/front_fr.67.400.jpg" alt="">
-                <span class="nutriscore">A</span>
-              <h3 class="mb-3 ba">Substitut 1</h3>
-
-              <p class="description text-muted mb-lg-0">Substitut 1</p>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-4 text-center">
-            <div class="service-box mt-5 mx-auto">
-              <img class="sr-icons img-about" src="https://static.openfoodfacts.org/images/products/310/322/000/9574/front_fr.67.400.jpg" alt="">
-                <span class="nutriscore">B</span>
-              <h3 class="mb-3">Substitut 2</h3>
-
-              <p class="description text-muted mb-lg-0">Substitut 2</p>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-4 text-center">
-            <div class="service-box mt-5 mx-auto">
-              <img class="sr-icons img-about" src="https://static.openfoodfacts.org/images/products/310/322/000/9574/front_fr.67.400.jpg" alt="">
-                <span class="nutriscore">B</span>
-              <h3 class="mb-3">Substitut 3</h3>
-
-              <p class="description text-muted mb-lg-0">Substitut 3</p>
-            </div>
-          </div>
+            {% endif %}
+        {% endfor %}
         </div>
-          <div class="row">
-          <div class="col-lg-4 col-md-4 text-center">
-            <div class="service-box mt-5 mx-auto">
-              <img class="sr-icons img-about" src="https://static.openfoodfacts.org/images/products/310/322/000/9574/front_fr.67.400.jpg" alt="">
-                <span class="nutriscore">B</span>
-              <h3 class="mb-3">Substitut 1</h3>
 
-              <p class="description text-muted mb-lg-0">Substitut 1</p>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-4 text-center">
-            <div class="service-box mt-5 mx-auto">
-              <img class="sr-icons img-about" src="https://static.openfoodfacts.org/images/products/310/322/000/9574/front_fr.67.400.jpg" alt="">
-                <span class="nutriscore">B</span>
-              <h3 class="mb-3">Substitut 2</h3>
 
-              <p class="description text-muted mb-lg-0">Substitut 2</p>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-4 text-center">
-            <div class="service-box mt-5 mx-auto">
-              <img class="sr-icons img-about" src="https://static.openfoodfacts.org/images/products/310/322/000/9574/front_fr.67.400.jpg" alt="">
-                <span class="nutriscore">B</span>
-              <h3 class="mb-3">Substitut 3</h3>
+    {% if food_json.count > page_size %}
+{#    <div>Il y a {{ food_json.count }} produits et {{ page_size }} produits par page (page {{ page }} sur {{ nb_pages }} )</div>#}
+      {% if page > 1 %}
+        <a class="btn mb-4" href="?q={{ query }}&page=1">|<</a>
+        <a class="btn mb-4" href="?q={{ query }}&page={{ page|add:'-1' }}"><</a>
+      {% endif %}
 
-              <p class="description text-muted mb-lg-0">Substitut 3</p>
+{#      {% for num in page_obj.paginator.page_range %}#}
+{#        {% if page_obj.number == num %}#}
+{#          <a class="btn btn-info mb-4" href="?page={{ num }}">{{ num }}</a>#}
+{#        {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}#}
+{#          <a class="btn btn-outline-info mb-4" href="?page={{ num }}">{{ num }}</a>#}
+{#        {% endif %}#}
+{#      {% endfor %}#}
+{##}
+      {% if page < nb_pages %}
+        <a class="btn mb-4" href="?q={{ query }}&page={{ page|add:'1' }}">></a>
+        <a class="btn mb-4" href="?q={{ query }}&page={{ nb_pages }}">>|</a>
+      {% endif %}
+
+    {% endif %}
+
+   {% else %}
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 mx-auto text-center">
+                <p>Entrez un produit à rechercher dans la barre de recherche </p>
             </div>
-          </div>
         </div>
-      </div>
-    </section>
+    </div>
+
+
+   {% endif %}
+
+    </div>
+</section>
 
 
 {% endblock content %}

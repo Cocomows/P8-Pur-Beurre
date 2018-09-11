@@ -10,7 +10,11 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>{% block title %}Pur Beurre{% endblock %}</title>
+    {% if title %}
+        <title>Pur Beurre - {{ title }}</title>
+    {% else %}
+        <title>Pur Beurre</title>
+    {% endif %}
     <link rel="shortcut icon" type="image/png" href="{% static 'pur_beurre/img/logo_pur_beurre-favicon.png' %}"/>
 
     <!-- Bootstrap core CSS -->
@@ -51,7 +55,9 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-             <input type="text" class="form-control" placeholder="Entrez un aliment">
+             <form class="foodsearch" action="{%  url 'pur-beurre-results' %}">
+              <input type="text" class="form-control" placeholder="Entrez un aliment" name="q">
+            </form>
             </li>
             <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="{% url 'pur-beurre-index' %}#about">A propos</a>
@@ -73,6 +79,16 @@
         </div>
       </div>
     </nav>
+{#    {% if messages %}#}
+{#        {% for message in messages %}#}
+{#            <div class="container">#}
+{#              <div class="alert alert-{{ message.tags }}">#}
+{#                {{ message }}#}
+{#              </div>#}
+{#            </div>#}
+{#        {% endfor %}#}
+{#    {% endif %}#}
+
     {% block content %}{% endblock content %}
 
     <!-- Bootstrap core JavaScript -->
