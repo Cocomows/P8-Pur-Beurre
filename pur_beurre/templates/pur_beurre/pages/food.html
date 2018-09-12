@@ -20,16 +20,23 @@
                 <img class="sr-icons img-product" src="{{ food_json.product.image_url}}" alt="">
                 <p>Le produit {{ food_json.product.product_name }} de la marque {{ food_json.product.brands }} a pour code : {{ code }}</p>
                 <p>Nutriscore : <img src="https://static.openfoodfacts.org/images/misc/nutriscore-{{ food_json.product.nutrition_grades }}.svg" alt=""></p>
-                <p>Le résultat en json brut : <a href="{{ api_url }}">lien</a></p>
-                <p>Les catégories :
-
-                {% for category in food_json.product.categories_hierarchy %}
-                    <a href="https://fr.openfoodfacts.org/categorie/{{ category }}.json">{{ category }}</a>
-                {% endfor %}
-                </p>
-
-{#                food_json.product.categories_hierarchy|length|add:'-1'#}
-                <p>Catégorie la plus fine :  <a href="https://fr.openfoodfacts.org/categorie/{{ food_json.product.categories_hierarchy|last }}.json">{{  food_json.product.categories_hierarchy|last }}</a></p>
+                <p>Le résultat en json brut : <a href="{{ api_product_url }}">lien</a></p>
+{#                <p>Catégorie la plus fine depuis vue : <a href="https://fr-en.openfoodfacts.org/category/{{ relevant_category }}/1.json">{{ relevant_category }}</a></p>#}
+{##}
+{#                <p>Dont : </p>#}
+{#                <p><a href="{{ url_a }}">A</a>: {{ products_a }}</p>#}
+{#                <p><a href="{{ url_b }}">B</a>: {{ products_b }}</p>#}
+{#                <p><a href="{{ url_c }}">C</a>: {{ products_c }}</p>#}
+{#                <p><a href="{{ url_d }}">D</a>: {{ products_d }}</p>#}
+{#                <p><a href="{{ url_e }}">E</a>: {{ products_e }}</p>#}
+                {#                <p>Les catégories :#}
+{##}
+{#                    {% for category in food_json.product.categories_hierarchy %}#}
+{#                        <a href="https://fr-en.openfoodfacts.org/category/{{ category }}.json">{{ category }}</a><br>#}
+{#                    {% endfor %}#}
+{#                </p>#}
+{#                <p><a href="{{ search_json_url }}">Search better</a></p>#}
+                <p>Better products : {{ better_products }}</p>
             </div>
         </div>
     </div>
