@@ -19,13 +19,16 @@
         <h2 class="section-heading">{{ food_json.product.product_name }} de la marque {{ food_json.product.brands }}</h2>
       </div>
     </div>
-      <hr class="my-4">
-      <div class="row">
-       <div class="col-lg-4 text-right">Ingrédients </div>
-      <div class="col-lg-8 text-left">
-        <p>{{ food_json.product.ingredients_text }}</p>
-      </div>
-    </div>
   </div>
+        <hr class="my-4">
+    <div class="container">
+        <div class="row">
+             <div class="col-lg-12 text-center">
+            <p>Le produit a bien été sauvegardé.</p>
+            <p>Vous pouvez retrouver vos produits enregistrés sur <a href="{% url 'saved-products' %}">votre page produits sauvegardés.</a></p>
+
+             </div>
+        </div>
+
 </section>
 {% endblock content %}

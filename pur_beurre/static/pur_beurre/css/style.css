@@ -42,7 +42,7 @@ a {
 }
 
 .img-product {
-    max-height: 175px;
+    height: 175px;
     max-width: 200px;
     text-align: center;
 }
@@ -68,6 +68,7 @@ a {
     font-family: "Scope One", sans-serif;
 }
 
+
 .nutriscore{
     position: absolute;
     top: 40px;
@@ -75,12 +76,27 @@ a {
     padding: 4px 9px;
     border: 2px solid white;
     border-radius:100px;
-    background: -webkit-linear-gradient(top, #cbb6a9 0%, #5d5c44 100%);
+    background: -webkit-linear-gradient(top, rgb(255, 233, 217) 0%, #5d5c44 100%);
     box-shadow: 0 1px 2px rgba(0,0,0,.5), 0 1px 4px rgba(0,0,0,.4), 0 0 1px rgba(0,0,0,.7) inset, 0 10px 0px rgba(255,255,255,.11) inset;
     -webkit-background-clip: padding-box;
     font:bold 16px/20px "Helvetica Neue", sans-serif;
     color: white;
     text-decoration: none;
     text-shadow: 0 -1px 0 rgba(0,0,0,.6);
+}
+.nutriscore.A{
+    background: -webkit-linear-gradient(top, #74ba96 0%, #038141 100%);
+}
+.nutriscore.B{
+    background: -webkit-linear-gradient(top, #bcda8c 0%, #85bb2f 100%);
+}
+.nutriscore.C{
+    background: -webkit-linear-gradient(top, #ffe373 0%, #fecb02 100%);
+}
+.nutriscore.D{
+    background: -webkit-linear-gradient(top, #f6ba72 0%, #ee8100 100%);
+}
+.nutriscore.E{
+    background: -webkit-linear-gradient(top, #f1947b 0%, #e63e11 100%);
 }
 

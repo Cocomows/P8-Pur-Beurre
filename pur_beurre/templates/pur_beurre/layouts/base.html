@@ -67,7 +67,7 @@
                 <a class="nav-link js-scroll-trigger" href="{% url 'profile' %}"><i class="fa fa-user fa-2x"></i></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link js-scroll-trigger" href=""><img src="{% static 'pur_beurre/img/noun_Carrot_29691_grey.png' %}" alt="" class="carrot"></a>
+                <a class="nav-link js-scroll-trigger" href="{% url 'saved-products' %}"><img src="{% static 'pur_beurre/img/noun_Carrot_29691_grey.png' %}" alt="" class="carrot"></a>
             </li>
 
           {% if user.is_authenticated %}
