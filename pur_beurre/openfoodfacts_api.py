@@ -1,6 +1,7 @@
 import requests
 import json
 
+
 def get_better_products(food_json):
     """
     This function requests json of products on openfoodfacts for a given category
@@ -41,9 +42,7 @@ def get_better_products(food_json):
                         if len(better_products) < nb_products_max:
                             if food_json['product']['code'] != product['code']:
                                 better_products.append(product)
-                            else:
-                                # if searched product in results, we iterate once more to get another one
-                                nb_products_max += 1
+
                         else:
                             return better_products
 

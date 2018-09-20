@@ -1,22 +1,24 @@
 
 import requests, json, math
 from django.shortcuts import render, get_object_or_404
-from .models import Product
+from .models import Product, Save
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
-from django.views.generic import ListView
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.views.generic import ListView, DeleteView
+from django.db import IntegrityError
 from .openfoodfacts_api import get_better_products
 
 
 class UserSavedProductsList(ListView):
-    model = Product
+    model = Save
     template_name = 'pur_beurre/pages/saved_products.html'
-    context_object_name = 'products'
+    context_object_name = 'saves'
     paginate_by = 6
 
     def get_queryset(self):
         user = get_object_or_404(User, username=self.request.user)
-        return Product.objects.filter(saved_by=user)
+        return Save.objects.filter(saved_by=user)
 
 
 def index(request):
@@ -60,6 +62,7 @@ def substitutes(request):
     food_json = requests.get(api_product_url).json()
 
     better_products = get_better_products(food_json)
+
     return render(request, "pur_beurre/pages/substitutes.html", locals())
 
 
@@ -78,9 +81,6 @@ def legal(request):
 @login_required
 def save_product(request):
 
-    # Information to keep for locals : json about the selected product
-    # and list of json about each better product
-
     code = request.GET.get('code')
     # We get the product info from the product code
     api_product_url = "https://fr-en.openfoodfacts.org/api/v0/produit/"+str(code)+".json"
@@ -98,8 +98,15 @@ def save_product(request):
                               link_openfoodfacts="https://fr.openfoodfacts.org/produit/"+food_json['product']['code'],)
 
     product_to_save.save()
-    product_to_save.saved_by.add(request.user)
-    # code nutriscore description image link_openfoodfacts saved_by
+
+    try:
+        save = Save(saved_by=request.user, saved_product=product_to_save)
+        save.save()
+    except IntegrityError as error:
+        print(error)
+        message_already_saved = "Vous avez déjà enregistré ce produit précédemment, " \
+                                "il n'a pas été rajouté à votre liste de produits sauvegardés."
+
     return render(request, "pur_beurre/pages/save.html", locals())
 
 
@@ -107,3 +114,14 @@ def save_product(request):
 def delete_saved(request):
     pass
 
+
+class SaveDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+    model = Save
+    template_name = 'pur_beurre/pages/save_confirm_delete.html'
+    success_url = '/saved'
+
+    def test_func(self):
+        save = self.get_object()
+        if self.request.user == save.saved_by:
+            return True
+        return False
