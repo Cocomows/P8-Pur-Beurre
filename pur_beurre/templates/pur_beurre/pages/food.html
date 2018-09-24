@@ -4,28 +4,27 @@
 {% block content %}
 
 <section id="food">
-  <div class="container">
-
-    <div class="row">
-        <div class="col-lg-8 text-center">
-            <img class="sr-icons img-product" src="{{ food_json.product.image_url}}" alt="">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 text-center">
+                <img class="sr-icons img-product" src="{{ food_json.product.image_url}}" alt="">
+            </div>
+            <div class="col-lg-4 text-center">
+                <img src="https://static.openfoodfacts.org/images/misc/nutriscore-{{ food_json.product.nutrition_grades }}.svg" alt="">
+            </div>
         </div>
-        <div class="col-lg-4 text-center">
-            <img src="https://static.openfoodfacts.org/images/misc/nutriscore-{{ food_json.product.nutrition_grades }}.svg" alt="">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2 class="section-heading">{{ food_json.product.product_name }} de la marque {{ food_json.product.brands }}</h2>
+            </div>
+        </div>
+        <hr class="my-4">
+        <div class="row">
+            <div class="col-lg-4 text-right">Ingrédients </div>
+            <div class="col-lg-8 text-left">
+                <p>{{ food_json.product.ingredients_text }}</p>
+            </div>
         </div>
     </div>
-    <div class="row">
-      <div class="col-lg-12 text-center">
-        <h2 class="section-heading">{{ food_json.product.product_name }} de la marque {{ food_json.product.brands }}</h2>
-      </div>
-    </div>
-      <hr class="my-4">
-      <div class="row">
-       <div class="col-lg-4 text-right">Ingrédients </div>
-      <div class="col-lg-8 text-left">
-        <p>{{ food_json.product.ingredients_text }}</p>
-      </div>
-    </div>
-  </div>
 </section>
 {% endblock content %}

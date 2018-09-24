@@ -42,7 +42,6 @@ def get_better_products(food_json):
                         if len(better_products) < nb_products_max:
                             if food_json['product']['code'] != product['code']:
                                 better_products.append(product)
-
                         else:
                             return better_products
 
@@ -53,7 +52,8 @@ def get_better_products(food_json):
 
         return better_products
     except KeyError:
-        better_products.append("Unknown Score")
+        # better_products.append("Unknown Score")
+        pass
     return better_products
 
 

@@ -15,10 +15,11 @@ class UserSavedProductsList(ListView):
     template_name = 'pur_beurre/pages/saved_products.html'
     context_object_name = 'saves'
     paginate_by = 6
+    ordering = ['-date']
 
     def get_queryset(self):
         user = get_object_or_404(User, username=self.request.user)
-        return Save.objects.filter(saved_by=user)
+        return Save.objects.filter(saved_by=user).order_by('-date')
 
 
 def index(request):
@@ -62,7 +63,7 @@ def substitutes(request):
     food_json = requests.get(api_product_url).json()
 
     better_products = get_better_products(food_json)
-
+    print(better_products)
     return render(request, "pur_beurre/pages/substitutes.html", locals())
 
 

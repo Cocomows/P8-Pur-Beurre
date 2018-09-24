@@ -12,6 +12,14 @@ h1{
     text-shadow: 0 1px 1px black, 1px 0 1px black;
 }
 
+div{
+    font-family: "Scope One", sans-serif;
+}
+
+.description a:hover {
+    text-decoration: none;
+}
+
 
 .header-subtitle{
     color: #fff;
@@ -29,6 +37,7 @@ a {
     font-size: small;
     text-align: center;
     text-justify: inter-word;
+    text-decoration: none;
 }
 
 .foodsearch {
