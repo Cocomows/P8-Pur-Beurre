@@ -20,11 +20,56 @@
         </div>
         <hr class="my-4">
         <div class="row">
-            <div class="col-lg-4 text-right">Ingrédients </div>
-            <div class="col-lg-8 text-left">
+            <div class="col-lg-12 text-center"><h4>Ingrédients</h4>
                 <p>{{ food_json.product.ingredients_text }}</p>
+            </div>
+        </div>
+        {% if food_json.product.image_nutrition_url %}
+        <div class="row">
+            <div class="col-lg-12 text-center"><h4>Valeurs nutritionnelles pour 100g </h4>
+
+                <img id="valnut" src="{{ food_json.product.image_nutrition_url }}" class="val-nut-100g" alt="Valeurs nutritionnelles pour 100g">
+                <div id="valnutModal" class="modal">
+                    <span class="close">&times;</span>
+                    <img class="modal-content" id="modalimg">
+                    <div id="caption"></div>
+                </div>
+
+            </div>
+        </div>
+        {% endif %}
+        <hr class="my-4">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <p><a href="https://fr-en.openfoodfacts.org/product/{{ food_json.product.code }}">Lien Open Food Facts</a></p>
             </div>
         </div>
     </div>
 </section>
+
+<script>
+// Get the modal
+var modal = document.getElementById('valnutModal');
+
+// Get the image and insert it inside the modal - use its "alt" text as a caption
+var img = document.getElementById('valnut');
+var modalImg = document.getElementById("modalimg");
+var captionText = document.getElementById("caption");
+img.onclick = function(){
+    modal.style.display = "block";
+    modalImg.src = this.src;
+    captionText.innerHTML = this.alt;
+};
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+    modal.style.display = "none";
+}
+modal.onclick = function() {
+    modal.style.display = "none";
+}
+</script>
 {% endblock content %}

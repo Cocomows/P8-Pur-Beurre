@@ -17,7 +17,7 @@
         <div class="row">
             <div class="col-lg-10 mx-auto text-center">
                 <p>Le produit recherché : {{ query }}</p>
-                <p>Le résultat en json brut : <a href="{{ api_total_url }}">lien</a></p>
+{#                <p>Le résultat en json brut : <a href="{{ api_total_url }}">lien</a></p>#}
             </div>
         </div>
     </div>
@@ -49,13 +49,13 @@
     {% if food_json.count > page_size %}
         {#    <div>Il y a {{ food_json.count }} produits et {{ page_size }} produits par page (page {{ page }} sur {{ nb_pages }} )</div>#}
         {% if page > 1 %}
-        <a class="btn mb-4" href="?q={{ query }}&page=1">|<</a>
-        <a class="btn mb-4" href="?q={{ query }}&page={{ page|add:'-1' }}"><</a>
+        <a class="btn btn-outline-secondary mb-4" href="?q={{ query }}&page=1">|<</a>
+        <a class="btn btn-outline-secondary mb-4" href="?q={{ query }}&page={{ page|add:'-1' }}"><</a>
         {% endif %}
 
         {% if page < nb_pages %}
-        <a class="btn mb-4" href="?q={{ query }}&page={{ page|add:'1' }}">></a>
-        <a class="btn mb-4" href="?q={{ query }}&page={{ nb_pages }}">>|</a>
+        <a class="btn btn-outline-secondary mb-4" href="?q={{ query }}&page={{ page|add:'1' }}">></a>
+        <a class="btn btn-outline-secondary mb-4" href="?q={{ query }}&page={{ nb_pages }}">>|</a>
         {% endif %}
     {% endif %}
 

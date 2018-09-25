@@ -54,6 +54,13 @@ def results(request):
 
 
 def substitutes(request):
+
+    if request.GET.get('page'):
+        page = int(request.GET.get('page'))
+    else:
+        page = 1
+    page_size = 6
+
     # Information to keep for locals : json about the selected product
     # and list of json about each better product
 
@@ -62,8 +69,9 @@ def substitutes(request):
     api_product_url = "https://fr-en.openfoodfacts.org/api/v0/produit/"+str(code)+".json"
     food_json = requests.get(api_product_url).json()
 
+    # nb_pages = int(math.ceil(food_json["count"] / int(food_json["page_size"])))
     better_products = get_better_products(food_json)
-    print(better_products)
+    # print(better_products)
     return render(request, "pur_beurre/pages/substitutes.html", locals())
 
 
