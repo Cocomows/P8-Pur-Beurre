@@ -61,3 +61,14 @@ class UserSavedProductsListTests(TestCase):
     #     # Use this syntax for class-based views.
     #     # response = MyView.as_view()(request)
     #     self.assertEqual(response.status_code, 200)
+
+
+# tests :
+# connexion de l'utilisateur
+# recherche de produit
+# recherche de produit non existant
+# recherche de produit sans nutriscore
+# recherche de produit sans catégorie
+# recherche de substitut
+# sauvegarde de produit
+# suppression de sauvegarde

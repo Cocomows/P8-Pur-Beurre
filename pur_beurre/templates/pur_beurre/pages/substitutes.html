@@ -23,7 +23,9 @@
                 <h2 class="section-heading">{{ food_json.product.product_name }} de la marque {{ food_json.product.brands }}</h2>
 
                 <a href="{% url 'pur-beurre-food' %}?code={{ food_json.product.code }}">Voir la page produit.</a> |
-                <a href="https://fr-en.openfoodfacts.org/product/{{ food_json.product.code }}" target="_blank">Voir sur Open food facts.</a>
+                <a href="https://fr-en.openfoodfacts.org/product/{{ food_json.product.code }}" target="_blank">Voir sur Open food facts.</a> |
+                <a class="save-link" href="{% url 'pur-beurre-save' %}?code={{ product.code }}"><i class="far fa-save"></i> Sauvegarder le produit</a>
+
 
                 <hr class="my-4">
                 <h3>Produits de substitution ayant un meilleur nutriscore :</h3>
