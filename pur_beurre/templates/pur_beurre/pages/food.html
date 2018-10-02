@@ -16,6 +16,7 @@
         <div class="row">
             <div class="col-lg-12 text-center">
                 <h2 class="section-heading">{{ food_json.product.product_name }} de la marque {{ food_json.product.brands }}</h2>
+                <a href="{% url 'pur-beurre-subsitutes' %}?code={{ food_json.product.code }}">Voir les produits de substitution.</a>
             </div>
         </div>
         <hr class="my-4">
@@ -41,7 +42,7 @@
         <hr class="my-4">
         <div class="row">
             <div class="col-lg-12 text-center">
-                <p><a href="https://fr-en.openfoodfacts.org/product/{{ food_json.product.code }}">Lien Open Food Facts</a></p>
+                <p><a href="https://fr-en.openfoodfacts.org/product/{{ food_json.product.code }}" target="_blank">Lien Open Food Facts</a></p>
             </div>
         </div>
     </div>
@@ -67,7 +68,7 @@ var span = document.getElementsByClassName("close")[0];
 // When the user clicks on <span> (x), close the modal
 span.onclick = function() {
     modal.style.display = "none";
-}
+};
 modal.onclick = function() {
     modal.style.display = "none";
 }

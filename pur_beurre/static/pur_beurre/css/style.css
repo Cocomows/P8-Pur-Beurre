@@ -21,7 +21,7 @@ h1{
 }
 
 .save-link{
-    font-size: 1.5em;
+    /*font-size: 1.5em;*/
 }
 
 h3.mb-3.ba{
@@ -136,10 +136,10 @@ a {
     display: none; /* Hidden by default */
     /*position: fixed; !* Stay in place *!*/
     z-index: 1; /* Sit on top */
-    padding-top: 200px; /* Location of the box */
+    padding-top: 90px; /* Location of the box */
     /*padding: 5rem 0;*/
     left: 0;
-    top: 50px;
+    top: 60px;
     width: 100%; /* Full width */
     height: 100%; /* Full height */
     overflow: none; /* Enable scroll if needed */
@@ -151,8 +151,11 @@ a {
 .modal-content {
     margin: auto;
     display: block;
-    width: 80%;
-    max-width: 700px;
+    width: auto;
+    /*width: auto;*/
+    height: 80% ;
+    max-height: 600px;
+    /*max-width: 700px;*/
 }
 
 /* Caption of Modal Image (Image Text) - Same Width as the Image */

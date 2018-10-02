@@ -69,6 +69,8 @@ def get_relevant_category(food_json):
 
     except KeyError:
         relevant_category = "Unknown category"
+    except IndexError:
+        relevant_category = "Unknown category"
 
     return relevant_category
 
