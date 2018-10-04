@@ -13,52 +13,55 @@
         </div>
     </div>
     {% if query is not None %}
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-10 mx-auto text-center">
-                <p>Sélectionnez votre produit.</p>
-{#                <p>Le résultat en json brut : <a href="{{ api_total_url }}">lien</a></p>#}
-            </div>
-        </div>
-    </div>
-    <div class="container">
-        <div class="row">
-        {% for product in food_json.products %}
-{#            {% if product.nutrition_grades %}#}
-                <div class="col-lg-4 col-md-4 text-center">
-                    <div class="service-box mt-5 mx-auto">
-                        <a href="{% url 'pur-beurre-subsitutes' %}?code={{ product.code }}">
-                        {% if product.image_url %}
-                        <img class="sr-icons img-product" src="{{ product.image_url }}" alt="">
-                        {% else %}
-                        <img class="sr-icons img-product" src="{%  static 'pur_beurre/img/no-pic.png' %}" alt="">
-                        {% endif %}
-                            {#                    <span class="nutriscore">{{ product.nutrition_grade_fr}}</span>#}
-                        <h3 class="mb-3 ba">{{ product.product_name}}</h3>
-{#                        <p class="description text-muted mb-lg-0">{{ product.generic_name}}</p></a>#}
+        {% if food_json.products %}
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-10 mx-auto text-center">
+                        <p>Sélectionnez votre produit.</p>
                     </div>
                 </div>
-
-                {% if forloop.counter|divisibleby:3 %}
             </div>
-            <div class="row">
-{#                {% endif %}#}
+            <div class="container">
+                <div class="row">
+                {% for product in food_json.products %}
+                        <div class="col-lg-4 col-md-4 text-center">
+                            <div class="service-box mt-5 mx-auto">
+                                <a href="{% url 'pur-beurre-subsitutes' %}?code={{ product.code }}">
+                                {% if product.image_url %}
+                                <img class="sr-icons img-product" src="{{ product.image_url }}" alt="">
+                                {% else %}
+                                <img class="sr-icons img-product" src="{%  static 'pur_beurre/img/no-pic.png' %}" alt="">
+                                {% endif %}
+                                <h3 class="mb-3 ba">{{ product.product_name}}</h3>
+                            </div>
+                        </div>
+
+                        {% if forloop.counter|divisibleby:3 %}
+                    </div>
+                    <div class="row">
+                    {% endif %}
+                {% endfor %}
+                </div>
+            {% if food_json.count > page_size %}
+                {% if page > 1 %}
+                <a class="btn btn-outline-secondary mb-4" href="?q={{ query }}&page=1">|<</a>
+                <a class="btn btn-outline-secondary mb-4" href="?q={{ query }}&page={{ page|add:'-1' }}"><</a>
+                {% endif %}
+
+                {% if page < nb_pages %}
+                <a class="btn btn-outline-secondary mb-4" href="?q={{ query }}&page={{ page|add:'1' }}">></a>
+                <a class="btn btn-outline-secondary mb-4" href="?q={{ query }}&page={{ nb_pages }}">>|</a>
+                {% endif %}
             {% endif %}
-        {% endfor %}
+        {% else %}
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 mx-auto text-center">
+                    <p>Nous n'avons pas trouvé de produit pour cette recherche.</p>
+                </div>
+            </div>
         </div>
-    {% if food_json.count > page_size %}
-        {#    <div>Il y a {{ food_json.count }} produits et {{ page_size }} produits par page (page {{ page }} sur {{ nb_pages }} )</div>#}
-        {% if page > 1 %}
-        <a class="btn btn-outline-secondary mb-4" href="?q={{ query }}&page=1">|<</a>
-        <a class="btn btn-outline-secondary mb-4" href="?q={{ query }}&page={{ page|add:'-1' }}"><</a>
         {% endif %}
-
-        {% if page < nb_pages %}
-        <a class="btn btn-outline-secondary mb-4" href="?q={{ query }}&page={{ page|add:'1' }}">></a>
-        <a class="btn btn-outline-secondary mb-4" href="?q={{ query }}&page={{ nb_pages }}">>|</a>
-        {% endif %}
-    {% endif %}
-
     {% else %}
     <div class="container">
         <div class="row">
