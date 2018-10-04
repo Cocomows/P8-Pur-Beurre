@@ -46,23 +46,23 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
+                    <li class="nav-item text-center">
                         <form class="foodsearch" action="{%  url 'pur-beurre-results' %}">
                             <input type="text" class="form-control" placeholder="Entrez un aliment" name="q">
                         </form>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item text-center">
                         <a class="nav-link js-scroll-trigger" href="{% url 'pur-beurre-index' %}#about">A propos</a>
                     </li>
 
-                    <li class="nav-item">
+                    <li class="nav-item text-center">
                         <a class="nav-link js-scroll-trigger" href="{% url 'profile' %}"><i class="fa fa-user fa-2x"></i></a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item text-center">
                         <a class="nav-link js-scroll-trigger" href="{% url 'saved-products' %}"><img src="{% static 'pur_beurre/img/noun_Carrot_29691_grey.png' %}" alt="" class="carrot"></a>
                     </li>
                     {% if user.is_authenticated %}
-                    <li class="nav-item">
+                    <li class="nav-item text-center">
                         <a class="nav-link js-scroll-trigger" href="{% url 'logout' %}"><i class="fa fa-sign-out-alt fa-2x"></i></a>
                     </li>
                     {% endif %}
@@ -70,15 +70,6 @@
             </div>
         </div>
     </nav>
-{#    {% if messages %}#}
-{#        {% for message in messages %}#}
-{#            <div class="container">#}
-{#              <div class="alert alert-{{ message.tags }}">#}
-{#                {{ message }}#}
-{#              </div>#}
-{#            </div>#}
-{#        {% endfor %}#}
-{#    {% endif %}#}
 
     {% block content %}{% endblock content %}
 
