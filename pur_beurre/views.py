@@ -119,11 +119,6 @@ def save_product(request):
     return render(request, "pur_beurre/pages/save.html", locals())
 
 
-@login_required
-def delete_saved(request):
-    pass
-
-
 class SaveDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Save
     template_name = 'pur_beurre/pages/save_confirm_delete.html'
