@@ -50,7 +50,7 @@ class ViewsTests(TestCase):
         """
         response = self.client.get(reverse('pur-beurre-subsitutes'), {'code': '3017620429484'})
         self.assertEqual(response.status_code, 200)
-        self.assertContains(response, 'Nutella de la marque Ferrero,Nutella')
+        self.assertContains(response, 'Nutella')
 
     def test_product_page(self):
         """
@@ -58,7 +58,7 @@ class ViewsTests(TestCase):
         """
         response = self.client.get(reverse('pur-beurre-food'), {'code': '3017620429484'})
         self.assertEqual(response.status_code, 200)
-        self.assertContains(response, 'Nutella de la marque Ferrero,Nutella')
+        self.assertContains(response, 'Nutella')
         self.assertContains(response, 'Ingrédients')
 
 
