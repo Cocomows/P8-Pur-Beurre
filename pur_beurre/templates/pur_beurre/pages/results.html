@@ -2,8 +2,7 @@
 {% load static %}
 
 {% block content %}
-
-<section id="results">
+<section id="results" >
     <div class="container">
         <div class="row">
             <div class="col-lg-12 text-center">
@@ -26,13 +25,14 @@
                 {% for product in food_json.products %}
                         <div class="col-lg-4 col-md-4 text-center">
                             <div class="service-box mt-5 mx-auto">
-                                <a href="{% url 'pur-beurre-subsitutes' %}?code={{ product.code }}">
-                                {% if product.image_url %}
-                                <img class="sr-icons img-product" src="{{ product.image_url }}" alt="">
-                                {% else %}
-                                <img class="sr-icons img-product" src="{%  static 'pur_beurre/img/no-pic.png' %}" alt="">
-                                {% endif %}
-                                <h3 class="mb-3 ba">{{ product.product_name}}</h3>
+                                <a href="{% url 'pur-beurre-subsitutes' %}?code={{ product.code }}" onclick="showLoading()">
+                                    {% if product.image_url %}
+                                    <img class="sr-icons img-product" src="{{ product.image_url }}" alt="">
+                                    {% else %}
+                                    <img class="sr-icons img-product" src="{%  static 'pur_beurre/img/no-pic.png' %}" alt="">
+                                    {% endif %}
+                                    <h3 class="mb-3 ba">{{ product.product_name}}</h3>
+                                </a>
                             </div>
                         </div>
 
@@ -73,5 +73,37 @@
     {% endif %}
     </div>
 </section>
+<section id="loading" style="display: none;">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center"><br/>
+            <i class="fa fa-spinner fa-pulse"></i> Chargement des produits de substitution.
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<script>
+function showLoading() {
+    var x = document.getElementById("loading");
+    var y = document.getElementById("results");
+
+    x.style.display = "block";
+    y.style.display = "none";
+}
+
+function hideLoading(){
+    var x = document.getElementById("loading");
+    var y = document.getElementById("results");
+    x.style.display = "none";
+    y.style.display = "block";
+}
+window.onpageshow = function(event) {
+    if (event.persisted) {
+        hideLoading();
+    }
+};
+</script>
 
 {% endblock content %}
