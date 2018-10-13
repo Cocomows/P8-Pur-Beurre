@@ -7,7 +7,11 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-8 text-center">
+                {% if food_json.product.image_url  %}
                 <img class="sr-icons img-product" src="{{ food_json.product.image_url}}" alt="">
+                {% else %}
+                <img class="sr-icons img-product" src="{%  static 'pur_beurre/img/no-pic.png' %}" alt="">
+                {% endif %}
             </div>
             <div class="col-lg-4 text-center">
                 {% if food_json.product.nutrition_grades  %}
