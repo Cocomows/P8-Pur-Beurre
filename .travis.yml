@@ -15,6 +15,9 @@ env: DJANGO_SETTINGS_MODULE="P8_Pur_Beurre.settings.travis"
 services:
   - postgresql
 
+addons:
+  postgresql: "9.4"
+
 script:
   - ./manage.py test
 
