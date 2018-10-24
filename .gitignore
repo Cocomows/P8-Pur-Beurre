@@ -102,3 +102,6 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+
+# production settings
+P8_Pur_Beurre/settings/production.py
