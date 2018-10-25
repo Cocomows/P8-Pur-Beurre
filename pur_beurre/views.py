@@ -1,4 +1,4 @@
-
+import logging
 import requests, json, math
 from django.shortcuts import render, get_object_or_404
 from .models import Product, Save
@@ -9,6 +9,8 @@ from django.views.generic import ListView, DeleteView
 from django.db import IntegrityError
 from .openfoodfacts_api import get_better_products
 
+#Get an instance of a logger 
+logger = logging.getLogger(__name__)
 
 class UserSavedProductsList(ListView):
     model = Save
@@ -24,7 +26,7 @@ class UserSavedProductsList(ListView):
 
 def index(request):
     return render(request, "pur_beurre/pages/home.html")
-
+	
 
 def results(request):
 
@@ -50,6 +52,7 @@ def results(request):
 
     nb_pages = int(math.ceil(food_json["count"] / int(food_json["page_size"])))
     api_total_url = resp.url
+    logger.info('New search', exc_info=True, extra={'search term:': query})
     return render(request, "pur_beurre/pages/results.html", locals())
 
 
