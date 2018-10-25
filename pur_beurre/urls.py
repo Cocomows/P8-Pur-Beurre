@@ -13,3 +13,6 @@ urlpatterns = [
     path('saved', login_required(views.UserSavedProductsList.as_view()), name='saved-products'),
     path('save/<int:pk>/delete/', views.SaveDeleteView.as_view(), name='save-delete'),
 ]
+
+handler404 = views.handler404
+handler500 = views.handler500

@@ -129,3 +129,11 @@ class SaveDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         if self.request.user == save.saved_by:
             return True
         return False
+
+
+def handler404(request):
+    return render(request, '404.html', status=404)
+
+
+def handler500(request):
+    return render(request, '500.html', status=500)
