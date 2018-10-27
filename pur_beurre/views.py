@@ -1,4 +1,4 @@
-
+import logging
 import requests, json, math
 from django.shortcuts import render, get_object_or_404
 from .models import Product, Save
@@ -9,6 +9,12 @@ from django.views.generic import ListView, DeleteView
 from django.db import IntegrityError
 from .openfoodfacts_api import get_better_products
 
+<<<<<<< HEAD
+=======
+
+#Get an instance of a logger 
+logger = logging.getLogger(__name__)
+>>>>>>> 31fb18b05aabbdd92002c57142a9491108cc8bef
 
 class UserSavedProductsList(ListView):
     model = Save
@@ -24,7 +30,7 @@ class UserSavedProductsList(ListView):
 
 def index(request):
     return render(request, "pur_beurre/pages/home.html")
-
+	
 
 def results(request):
 
@@ -50,6 +56,7 @@ def results(request):
 
     nb_pages = int(math.ceil(food_json["count"] / int(food_json["page_size"])))
     api_total_url = resp.url
+    logger.info('New search', exc_info=True, extra={'search term:': query})
     return render(request, "pur_beurre/pages/results.html", locals())
 
 
@@ -131,7 +138,11 @@ class SaveDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         return False
 
 
+<<<<<<< HEAD
 def handler404(request):
+=======
+ def handler404(request):
+>>>>>>> 31fb18b05aabbdd92002c57142a9491108cc8bef
     return render(request, '404.html', status=404)
 
 
