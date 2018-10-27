@@ -9,9 +9,6 @@ from django.views.generic import ListView, DeleteView
 from django.db import IntegrityError
 from .openfoodfacts_api import get_better_products
 
-from django.shortcuts import render_to_response
-from django.template import RequestContext
-
 
 class UserSavedProductsList(ListView):
     model = Save
@@ -134,12 +131,8 @@ class SaveDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         return False
 
 
-def handler404(request, exception, template_name='404.html'):
-    response = render_to_response('404.html', RequestContext(request), status=404)
-    return response
-
-# def handler404(request):
-#     return render(request, '404.html', status=404)
+def handler404(request):
+    return render(request, '404.html', status=404)
 
 
 def handler500(request):
