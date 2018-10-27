@@ -9,12 +9,9 @@ from django.views.generic import ListView, DeleteView
 from django.db import IntegrityError
 from .openfoodfacts_api import get_better_products
 
-<<<<<<< HEAD
-=======
 
 #Get an instance of a logger 
 logger = logging.getLogger(__name__)
->>>>>>> 31fb18b05aabbdd92002c57142a9491108cc8bef
 
 class UserSavedProductsList(ListView):
     model = Save
@@ -30,7 +27,7 @@ class UserSavedProductsList(ListView):
 
 def index(request):
     return render(request, "pur_beurre/pages/home.html")
-	
+
 
 def results(request):
 
@@ -138,11 +135,8 @@ class SaveDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         return False
 
 
-<<<<<<< HEAD
+
 def handler404(request):
-=======
- def handler404(request):
->>>>>>> 31fb18b05aabbdd92002c57142a9491108cc8bef
     return render(request, '404.html', status=404)
 
 
